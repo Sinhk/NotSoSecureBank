@@ -1,0 +1,15 @@
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.logo, h1.logo {
+    text-decoration: line-through;
+    font-weight: bold;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: red;
+}

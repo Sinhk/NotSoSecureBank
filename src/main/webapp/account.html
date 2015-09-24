@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>IkkeSåSikkerBanken</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        
+        <link href="css/jquery.dataTables.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/navbar.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="container">
+            <!-- Static navbar -->
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="home.html"><div class="logo">IkkeSåSikkerBanken</div></a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="mypage.html">Min Side</a></li>
+                            <li class="active"><a href="#">Konto</a></li>
+                            <li><a href="pay.html">Betaling</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="index.html" id="logout">Logg av</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div><!--/.container-fluid -->
+            </nav>
+          
+            <div class="alert alert-info fade in" data-alert="alert">
+                <p>Saldo: <strong><span id="balance"></span>kr</strong></p>
+            </div>
+            
+            <div class="panel panel-info">
+                <div class="panel-heading">Transaksjoner</div>   
+                <div class="panel-body">
+                    <table id="transactions" class="display" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-3">Dato</th>
+                                <th class="col-sm-5">Sender/Mottaker</th>
+                                <th class="col-sm-5">Beskrivelse</th>
+                                <th class="col-sm-2">Inn</th>
+                                <th class="col-sm-2">Ut</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div> <!-- /container -->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/dataTables.bootstrap.min.js"></script>
+        <script src="common.js"></script>
+        <script src="account.js"></script>
+    </body>
+</html>
