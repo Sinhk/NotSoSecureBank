@@ -20,6 +20,7 @@ $(document).ready(function() {
             complete: function(jqXHR, textStatus) {
                 switch (jqXHR.status) {
                     case 200:
+                        document.cookie = "testcookie=sensitive data";
                         window.location.href="mypage.html";
                         break;
                     case 401:
