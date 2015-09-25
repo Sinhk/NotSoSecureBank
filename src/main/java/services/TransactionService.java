@@ -1,5 +1,6 @@
 package services;
 
+import data.Session;
 import data.Transaction;
 import db.TransactionDao;
 import db.UserDao;
@@ -10,6 +11,7 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -36,7 +38,13 @@ public class TransactionService {
     @POST
     @Consumes("application/json")
     public void add(Transaction transaction) {       
-        // Hmm maybe we could check that the transaction creator corresponds with the logged on user...
+        // Check that the transaction sender is the logged user
+        Session session = (Session)request.getSession().getAttribute("session");
+        if(!transaction.getFromEmail().equals(session.getEmail())) {
+            throw new NotAuthorizedException("Cannot access this account", Response.Status.FORBIDDEN);
+        }
+        
+        // Add transaction
         try {
             transactionDao.addTransaction(transaction);
             log.info("Added transaction!");        
@@ -48,8 +56,14 @@ public class TransactionService {
 
     @GET
     @Produces("application/json")
-    public List<Transaction> get(@PathParam("email") String currentUserEmail) {
-        // Hmm maybe we could check that the currentUserEmail corresponds with the logged on user...
+    public List<Transaction> get(@PathParam("email") String currentUserEmail) {       
+        // Check that it is the logged user's account that is being accessed
+        Session session = (Session)request.getSession().getAttribute("session");
+        if(!currentUserEmail.equals(session.getEmail())) {
+            throw new NotAuthorizedException("Cannot access this account", Response.Status.FORBIDDEN);
+        }
+        
+        // Get transaction
         try {
             return transactionDao.getTransactions(currentUserEmail);
         } catch(SQLException e) {
