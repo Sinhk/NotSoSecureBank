@@ -23,8 +23,8 @@ public class Db {
             Connection connection = DriverManager.getConnection("jdbc:h2:~/" + DB_NAME, DB_NAME, "");
             try {
                 Statement statement = connection.createStatement();
-                statement.executeUpdate("CREATE TABLE IF NOT EXISTS user ( email VARCHAR(128) PRIMARY KEY, first_name VARCHAR(128), last_name VARCHAR(128), password VARCHAR(128) )");
-                statement.executeUpdate("CREATE TABLE IF NOT EXISTS transaction ( from_email VARCHAR(128), to_email VARCHAR(128), text VARCHAR(128), amount DECIMAL(20, 2), transaction_time TIMESTAMP )");
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS user ( email VARCHAR(256) PRIMARY KEY, first_name VARCHAR(256), last_name VARCHAR(256), password VARCHAR(256) )");
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS transaction ( from_email VARCHAR(256), to_email VARCHAR(256), text VARCHAR(256), amount DECIMAL(20, 2), transaction_time TIMESTAMP )");
                 statement.close();
             } finally {
                 connection.close();
