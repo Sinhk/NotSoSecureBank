@@ -46,9 +46,12 @@ public class SessionService {
         try {
             User user = userDao.getUser(data.getEmail());
             if(user == null && data.getEmail() != null && data.getPassword() != null) {
+                // Register new user
                 userDao.addUser(new User(data.getEmail(), "", "", data.getPassword()));
                 transactionDao.addTransaction(new Transaction("nissen@ikkesaasikkerbanken.no", data.getEmail(), "Startgave", 1000d, new Date()));
+                log.info("Registered new user");
             } else {
+                // Existing user. Check that password is correct.
                 if(!data.getPassword().equals(user.getPassword())) {
                     throw new NotAuthorizedException("Feil brukernavn eller passord");
                 }

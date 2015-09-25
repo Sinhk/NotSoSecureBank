@@ -36,7 +36,6 @@ public class UserService {
     @Path("/{email}")
     @Consumes("application/json")
     public void update(User user) {       
-        // Hmm maybe we could check that the user is the logged on user or an administrator...
         try {
             userDao.updateUser(user);
             log.info("Updated user!");        
@@ -50,7 +49,6 @@ public class UserService {
     @Path("/{email}")
     @Produces("application/json")
     public User get(@PathParam("email") String currentUserEmail) {
-        // Hmm maybe we could check that the user is the logged on user or an administrator...
         try {
             return userDao.getUser(currentUserEmail);
         } catch(SQLException e) {
