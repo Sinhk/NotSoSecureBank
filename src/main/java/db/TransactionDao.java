@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 
 /**
  * @author nilstes
- * TransactioDAO
  */
 public class TransactionDao {
 
