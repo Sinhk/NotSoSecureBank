@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 /**
  * @author nilstes
  */
-public class TransactionDao {
+public class TransactionDao {khhbmb
 
     private static final Logger log = Logger.getLogger(TransactionDao.class.getName());
 
