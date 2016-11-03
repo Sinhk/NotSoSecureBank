@@ -20,7 +20,7 @@ function initTable(table, email) {
                 table.row.add([
                     date.toLocaleDateString() + ' ' + date.toLocaleTimeString(),
                     subject,
-                    data[i].text,
+                    htmlEncode(data[i].text),
                     inAmount,
                     outAmount
                 ]);
@@ -32,6 +32,9 @@ function initTable(table, email) {
             window.location.href = "error.html";
         }
     });
+}
+function htmlEncode(value) {
+    return $('<div/>').text(value).html();
 }
 
 $(document).ready(function() {
